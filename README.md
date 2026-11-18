@@ -1,6 +1,6 @@
 # workflow-studio
 
-> Working name only. Private repo. Status: **early ideation**, no code yet.
+> Working name only. Status: **early ideation**, no code yet. Licence: TBD.
 
 An autonomous AI workflow studio. You upload a dataset and describe a goal. A team of agents, working on a live canvas, interviews you, profiles the data, designs a workflow, designs the evaluation, runs it and iterates until the goal is met, pausing at approval checkpoints along the way.
 
@@ -93,4 +93,4 @@ Tracked as issues labelled `question`.
 
 ## Status
 
-Early ideation. Private. Planning lives in the GitHub Project board linked to this repo.
+Early ideation, no code yet. Licence to be decided (none yet, so all rights reserved by default). Planning lives in the GitHub Project board linked to this repo.

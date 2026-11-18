@@ -1,8 +1,10 @@
-# workflow-studio
+# Foothold
 
-> Working name only. Status: **early ideation**, no code yet. Licence: TBD.
+> Status: **early ideation**, no code yet. Licence: TBD.
 
 **A turnkey way to get AI working on your problem, even if you have never built or tested an AI system before.**
+
+*Why "Foothold": the first grip that gets you unstuck and climbing.*
 
 ## The problem
 
@@ -14,7 +16,7 @@ People who are new to AI, or not technical enough to build their own experiment 
 
 ## How it works
 
-You set a goal in plain language. You then either bring some context (your own documents or data) or ask the studio to generate synthetic context when you have none. A team of agents works with you from there: they ask you questions to sharpen the goal, look at the data, design the AI solution, design the eval, run it and keep improving it, pausing for your approval at key points. You don't build any harness or platform yourself.
+You set a goal in plain language. You then either bring some context (your own documents or data) or ask Foothold to generate synthetic context when you have none. A team of agents works with you from there: they ask you questions to sharpen the goal, look at the data, design the AI solution, design the eval, run it and keep improving it, pausing for your approval at key points. You don't build any harness or platform yourself.
 
 ## What you get
 

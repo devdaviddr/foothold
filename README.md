@@ -2,13 +2,27 @@
 
 > Working name only. Status: **early ideation**, no code yet. Licence: TBD.
 
-An autonomous AI workflow studio. You upload a dataset and describe a goal. A team of agents, working on a live canvas, interviews you, profiles the data, designs a workflow, designs the evaluation, runs it and iterates until the goal is met, pausing at approval checkpoints along the way.
+**A turnkey way to get AI working on your problem, even if you have never built or tested an AI system before.**
 
 ## The problem
 
-Most tools in this space give a human a canvas to build a workflow, or a lab to evaluate one. Almost none take a dataset and a goal, then keep going as a team until a signed-off target is hit. That gap is the idea.
+More and more people want to use AI to solve real problems: sorting documents into categories, drawing conclusions from a pile of information, pulling key details out of forms. But most of them don't know where to start. They haven't heard of an "eval" (a repeatable test of whether the AI is actually doing a good job), and building the test harnesses and platforms needed to run experiments properly takes technical skill that many people don't have.
+
+## Who it's for
+
+People who are new to AI, or not technical enough to build their own experiment and evaluation setup, but who know what outcome they want.
 
 ## How it works
+
+You set a goal in plain language. You then either bring some context (your own documents or data) or ask the studio to generate synthetic context when you have none. A team of agents works with you from there: they ask you questions to sharpen the goal, look at the data, design the AI solution, design the eval, run it and keep improving it, pausing for your approval at key points. You don't build any harness or platform yourself.
+
+## What you get
+
+- A runnable workflow (code and prompts)
+- An eval harness and test set
+- A design write-up in Markdown explaining what was built and why
+
+## Under the hood
 
 ### Agent roles
 
@@ -45,12 +59,6 @@ Every project has a dollar cap and a token cap, warns at about 80% and hard-stop
 
 The canvas is the product surface: the workflow graph and the agent stations on one board, live activity, a scoreboard (target versus current, with history), and checkpoint panels (Approve, Edit, Send back). Checkpoints must be resumable, so closing the laptop never loses a run.
 
-## Outputs
-
-- A runnable workflow (code and prompts)
-- An eval harness and test set
-- A design write-up in Markdown explaining what was built and why
-
 ## Differentiators
 
 - Adversarial red-team sign-off
@@ -61,13 +69,14 @@ The canvas is the product surface: the workflow graph and the agent stations on 
 - Exports that ship with eval and drift monitoring
 - Local-models option
 - Start from a handful of examples
+- Synthetic context when you have no data
 
 ## MVP scope
 
 Single user, one project at a time, one dataset and one goal taken through the whole loop.
 
 In:
-- Upload CSV, JSON or a folder of text/documents; goal in natural language
+- Upload CSV, JSON or a folder of text/documents, or generate synthetic context when there is no data; goal in natural language
 - Interviewer; target set by the user or proposed and signed off
 - Seven roles on a live canvas with checkpoints, visible cost cap and resumable pause
 - First eval layer: held-out split, a few deterministic metrics, optional LLM-as-judge

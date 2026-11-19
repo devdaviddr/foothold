@@ -13,3 +13,12 @@ __pycache__/
 coverage/
 .idea/
 .vscode/
+
+# Foothold local data (SQLite database holding your API keys). Never commit.
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+next-env.d.ts
+*.tsbuildinfo

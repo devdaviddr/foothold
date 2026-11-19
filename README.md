@@ -1,6 +1,6 @@
 # Foothold
 
-> Status: **early ideation**, no code yet. Licence: TBD.
+> Status: **early ideation**, no code yet. Licence: [MIT](LICENSE).
 
 **A turnkey way to get AI working on your problem, even if you have never built or tested an AI system before.**
 
@@ -104,4 +104,4 @@ Tracked as issues labelled `question`.
 
 ## Status
 
-Early ideation, no code yet. Licence to be decided (none yet, so all rights reserved by default). Planning lives in the GitHub Project board linked to this repo.
+Early ideation, no code yet. Licensed under the [MIT licence](LICENSE). Planning lives in the GitHub Project board linked to this repo.

@@ -1,11 +1,11 @@
 import { mkdirSync } from "node:fs";
 import path from "node:path";
-import { createClient } from "@libsql/client";
+import { createClient, type Client } from "@libsql/client";
 import { drizzle, type LibSQLDatabase } from "drizzle-orm/libsql";
 import { migrate } from "drizzle-orm/libsql/migrator";
 import * as schema from "./schema";
 
-export type Db = LibSQLDatabase<typeof schema>;
+export type Db = LibSQLDatabase<typeof schema> & { $client: Client };
 
 const MIGRATIONS_FOLDER = path.join(process.cwd(), "drizzle");
 
@@ -19,8 +19,9 @@ export async function openDb(filePath: string): Promise<Db> {
 }
 
 export function defaultDbPath(): string {
-  const dir = process.env.FOOTHOLD_DATA_DIR ?? path.join(process.cwd(), "data");
-  return path.join(path.resolve(dir), "foothold.db");
+  // The data folder is chosen at runtime, so keep the bundler from tracing it.
+  const dir = process.env.FOOTHOLD_DATA_DIR ?? "data";
+  return path.join(path.resolve(/*turbopackIgnore: true*/ process.cwd(), dir), "foothold.db");
 }
 
 // Reuse one connection across hot reloads in dev.

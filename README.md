@@ -1,10 +1,49 @@
 # Foothold
 
-> Status: **early ideation**, no code yet. Licence: [MIT](LICENSE).
+> Status: **early skeleton** (milestone M0). Licence: [MIT](LICENSE).
 
 **A turnkey way to get AI working on your problem, even if you have never built or tested an AI system before.**
 
 *Why "Foothold": the first grip that gets you unstuck and climbing.*
+
+## Quickstart
+
+You need [Node.js](https://nodejs.org/) 22 or newer and [pnpm](https://pnpm.io/installation).
+
+```bash
+git clone https://github.com/devdaviddr/foothold.git
+cd foothold
+pnpm install
+pnpm dev
+```
+
+Open <http://localhost:3000>, then:
+
+1. Go to **Settings** and paste an API key for OpenAI, Anthropic or Google. Press **Test key** to check it works.
+2. Pick a main provider and default models. The judge model defaults to a different provider from the main one, so add a second key if you can.
+3. Go to **Projects** and create a project with a name and a goal.
+
+Your keys and projects are stored in a local SQLite file at `data/foothold.db` (gitignored). Keys are only ever sent to the provider they belong to and are masked in the UI. To keep the data somewhere else, copy `.env.example` to `.env.local` and set `FOOTHOLD_DATA_DIR`.
+
+### Development
+
+| Command | What it does |
+| --- | --- |
+| `pnpm dev` | Run the app with hot reload |
+| `pnpm lint` | ESLint |
+| `pnpm typecheck` | TypeScript, no emit |
+| `pnpm test` | Vitest |
+| `pnpm build` | Production build |
+| `pnpm db:generate` | Create a Drizzle migration after editing `src/db/schema.ts` |
+| `pnpm db:migrate` | Apply migrations now (the app also applies them on first use) |
+
+Where things live:
+
+- `src/lib/llm.ts`: the single provider interface. Every model call goes through it.
+- `src/lib/providers.ts`: providers, models and prices per million tokens.
+- `src/lib/settings.ts`: API keys and model choices.
+- `src/lib/projects.ts`: project storage.
+- `src/db/`: Drizzle schema and database client; migrations are in `drizzle/`.
 
 ## The problem
 
@@ -88,15 +127,14 @@ Out (for now): team workspaces, one-click hosting, fine-tuning, audio/video/huge
 
 Candidate first use cases: support ticket classification; structured field extraction from documents. A later milestone: question answering over a document set.
 
-## Planned stack (a starting point, not locked)
+## Stack
 
-- App: Next.js and TypeScript
-- Canvas: React Flow
-- Agent loop: LangGraph (Python), with interrupts and Postgres checkpointers
-- State: Postgres; local disk for datasets and exports
-- Sandbox: Docker, no network by default, CPU/memory limits, hard timeout
-- Evals: a small built-in harness first; hosted eval tools possible later
-- Alternative considered: Mastra for an all-TypeScript stack
+- One TypeScript app: Next.js (App Router)
+- Model calls: the [Vercel AI SDK](https://ai-sdk.dev/) with the user's own API key (OpenAI, Anthropic, Google)
+- State: SQLite with Drizzle ORM and migrations; local disk for datasets and exports
+- Workflows: a description of prompt steps that Foothold runs, not generated code
+- Canvas (planned): React Flow
+- Evals (planned): a small built-in harness first; hosted eval tools possible later
 
 ## Open questions
 
@@ -104,4 +142,4 @@ Tracked as issues labelled `question`.
 
 ## Status
 
-Early ideation, no code yet. Licensed under the [MIT licence](LICENSE). Planning lives in the GitHub Project board linked to this repo.
+Milestone M0 (skeleton): projects, local settings and the provider interface are in place. Licensed under the [MIT licence](LICENSE). Planning lives in the GitHub Project board linked to this repo.

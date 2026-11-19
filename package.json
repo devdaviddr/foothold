@@ -5,6 +5,10 @@
   "description": "A turnkey way to get AI working on your problem, even if you have never built or tested an AI system before.",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
